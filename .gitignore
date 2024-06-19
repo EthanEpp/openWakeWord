@@ -131,6 +131,7 @@ dmypy.json
 # generated audio
 *.wav
 *.m4a
+*.mp3
 
 # generated features
 *.npy
