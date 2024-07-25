@@ -80,7 +80,7 @@ parser.add_argument(
     "--model_path",
     help="The path of a specific model to load",
     type=str,
-    default="/Users/SAI/Documents/Code/wakeWord/wakeWordForked/Untitled/wakeword_models/hey_zelda/hey_Zelda_med_multi_phrase.onnx",
+    default="wakeword_models/hey_co_pilot/hey_co_pilot.onnx",
     required=False
 )
 parser.add_argument(

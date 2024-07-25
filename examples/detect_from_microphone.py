@@ -32,7 +32,7 @@ parser.add_argument(
     help="The path of a specific model to load",
     type=str,
     # default="/Users/SAI/Documents/Code/wakeWord/wakeWordForked/Untitled/notebooks/openwakeword/openwakeword/resources/models/hey_stryker_dipco_1.onnx",
-    default="wakeword_models/hey_zelda/hey_Zelda_negative1.onnx",
+    default="wakeword_models/hey_co_pilot/hey_co_pilot.onnx",
     required=False
 )
 parser.add_argument(

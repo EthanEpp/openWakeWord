@@ -43,7 +43,7 @@ parser.add_argument(
     "--output_dir",
     help="Where to save the audio that resulted in an activation",
     type=str,
-    default="positivedetections/meeting_test/june_20_standup/voice_genie_v01",
+    default="positivedetections/meeting_test/july_24_standup/voice_genie_v01",
     required=False
 )
 parser.add_argument(
