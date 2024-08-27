@@ -43,7 +43,7 @@ parser.add_argument(
     "--output_dir",
     help="Where to save the audio that resulted in an activation",
     type=str,
-    default="positivedetections/meeting_test/july_24_standup/hey_stryker_dipco_1",
+    default="positivedetections/meeting_test/aug_1_standup/hey_barcoh_v1",
     required=False
 )
 parser.add_argument(
@@ -80,7 +80,7 @@ parser.add_argument(
     "--model_path",
     help="The path of a specific model to load",
     type=str,
-    default="wakeword_models/hey_stryker/hey_stryker_dipco_1.onnx",
+    default="wakeword_models/hey_barco/hey_barcoh (2).onnx",
     required=False
 )
 parser.add_argument(
