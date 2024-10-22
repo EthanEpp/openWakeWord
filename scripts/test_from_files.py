@@ -12,7 +12,7 @@ parser.add_argument(
     "--input_dirs",
     help="Comma-separated list of directories containing the WAV files to process",
     type=str,
-    default="examples/audio/hey_zelda/no_mask/no_back/,examples/audio/hey_zelda/no_mask/med_back/,examples/audio/hey_zelda/no_mask/high_back/,examples/audio/hey_zelda/no_mask/max_back/",
+    default="examples/audio/hey_zelda/no_mask/no_back,examples/audio/hey_zelda/no_mask/med_back,examples/audio/hey_zelda/no_mask/high_back,examples/audio/hey_zelda/no_mask/max_back",
     required=False
 )
 parser.add_argument(
@@ -49,7 +49,7 @@ parser.add_argument(
     help="The path of a specific model to load",
     type=str,
     default="/Users/SAI/Documents/Code/wakeWord/wakeWordForked/Untitled/wakeword_models/hey_zelda/hey_Zelda_8_15.onnx",
-    # default="/Users/SAI/Documents/Code/wakeWord/wakeWordForked/Untitled/wakeword_models/hey_zelda/hey_Zelda_med_multi_phrase.onnx",
+    # default="/Users/SAI/Documents/Code/wakeWord/wakeWordForked/Untitled/wakeword_models/hey_acuity/hey_acuity (3).onnx",
     required=False
 )
 parser.add_argument(
@@ -107,9 +107,9 @@ for input_dir in input_dirs:
                 # Record the highest prediction score
                 max_score = max(prediction.values())
                 all_max_scores.append(max_score)
-
     # Calculate false rejects for each threshold
     total_activations = len(all_max_scores)
+    print(input_dir, total_activations)
     # false_rejects = [total_activations - sum(1 for score in all_max_scores if score >= threshold) for threshold in thresholds]
     false_rejects = [(total_activations - sum(1 for score in all_max_scores if score >= threshold)) / total_activations * 100 for threshold in thresholds]
     all_false_rejects.append(false_rejects)
