@@ -1,17 +1,3 @@
-# Copyright 2022 David Scripka. All rights reserved.
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#     http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-
 ##################################
 
 # This example scripts runs openWakeWord continuously on a microphone stream,
@@ -117,30 +103,6 @@ if args.model_path != "":
         )
 else:
     owwModel = Model(inference_framework=args.inference_framework)
-
-
-# # Load pre-trained openwakeword models
-# if args.model_path:
-#     model_paths = openwakeword.get_pretrained_model_paths()
-#     for path in model_paths:
-#         if args.model_path in path:
-#             model_path = path
-            
-#     if model_path:
-#         owwModel = Model(
-#             wakeword_models=[model_path],
-#             enable_speex_noise_suppression=args.noise_suppression,
-#             vad_threshold = args.vad_threshold,
-#             inference_framework=args.inference_framework
-#         )
-#     else: 
-#         print(f'Could not find model \"{args.model_path}\"')
-#         exit()
-# else:
-#     owwModel = Model(
-#         enable_speex_noise_suppression=args.noise_suppression,
-#         vad_threshold=args.vad_threshold
-#     )
 
 # Set waiting period after activation before saving clip (to get some audio context after the activation)
 save_delay = 1  # seconds
