@@ -17,8 +17,7 @@ parser.add_argument(
     "--model_path",
     help="The path of a specific model to load",
     type=str,
-    # default="/Users/SAI/Documents/Code/wakeWord/wakeWordForked/Untitled/notebooks/openwakeword/openwakeword/resources/models/hey_stryker_dipco_1.onnx",
-    default="wakeword_models/hey_co_pilot/hey_co_pilot.onnx",
+    default="wakeword_models/hey_zelda/hey_Zelda_8_15.onnx",
     required=False
 )
 parser.add_argument(
@@ -79,10 +78,10 @@ if __name__ == "__main__":
             scores = list(owwModel.prediction_buffer[mdl])
             curr_score = format(scores[-1], '.20f').replace("-", "")
 
-            status = "--" + " " * 20 if scores[-1] <= 0.5 else "Wakeword Detected!"
+            status = "--" + " " * 20 if scores[-1] <= 0.05 else "Wakeword Detected!"
             output_string_header += f"""{mdl}{" "*(n_spaces - len(mdl))}   | {curr_score[0:5]} | {status} | {inference_time:.6f}
             """
-            if scores[-1] > 0.5:
+            if scores[-1] > 0.05:
                 wakeword_detected = True
 
         # Print results table
