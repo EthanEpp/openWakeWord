@@ -28,6 +28,7 @@ parser.add_argument(
     required=False
 )
 
+
 args = parser.parse_args()
 
 # Get microphone stream
@@ -55,6 +56,9 @@ if __name__ == "__main__":
     print("Listening for wakewords...")
     print("#"*100)
     print("\n"*(n_models*3))
+    patience = {} 
+    threshold = {"hey_Zelda_8_15": 0.0637}  
+
 
     while True:
         # Get audio
@@ -63,6 +67,7 @@ if __name__ == "__main__":
         # Measure inference time
         start_time = time.time()
         prediction = owwModel.predict(audio)
+        # prediction = owwModel.predict(audio, debounce_time=1.5, threshold=threshold)
         inference_time = time.time() - start_time
 
         # Column titles
@@ -81,7 +86,7 @@ if __name__ == "__main__":
             status = "--" + " " * 20 if scores[-1] <= 0.05 else "Wakeword Detected!"
             output_string_header += f"""{mdl}{" "*(n_spaces - len(mdl))}   | {curr_score[0:5]} | {status} | {inference_time:.6f}
             """
-            if scores[-1] > 0.05:
+            if scores[-1] > 0.0637:
                 wakeword_detected = True
 
         # Print results table

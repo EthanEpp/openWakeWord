@@ -93,6 +93,7 @@ CHUNK = args.chunk_size * 4
 audio = pyaudio.PyAudio()
 mic_stream = audio.open(format=FORMAT, channels=CHANNELS, rate=RATE, input=True, frames_per_buffer=CHUNK)
 
+
 # Load pre-trained openwakeword models
 if args.model_path != "":
     owwModel = Model(
@@ -124,9 +125,11 @@ if __name__ == "__main__":
     while True:
         # Get audio
         mic_audio = np.frombuffer(mic_stream.read(CHUNK), dtype=np.int16)
+        patience = {}  # e.g., {"model_name": 3} if using patience, or leave as empty if not
+        threshold = {"hey_Zelda_8_15": 0.0637}  # Replace "hey_Zelda_model" with the actual model name in your setup
 
         # Feed to openWakeWord model
-        prediction = owwModel.predict(mic_audio)
+        prediction = owwModel.predict(mic_audio, debounce_time=1.25, threshold=threshold)
 
         # Check for model activations (score above threshold), and save clips
         for mdl in prediction.keys():
